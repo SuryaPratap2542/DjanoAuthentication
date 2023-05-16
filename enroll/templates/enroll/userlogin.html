@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User login</title>
+    <style>
+        .er{
+            color:red;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+            <p class="er"> {{error}} </p>
+        {% endfor %}
+        {% endif %}
+      
+
+        {% comment %} {{form.as_p}} {% endcomment %}
+        {% for i in form %}
+        {{i.label_tag}} {{i}} {{i.errors|striptags}} <br><br>
+        {% endfor %}
+        <input type="submit" value="Login">
+
+        hello
+
+    </form>
+    <a href="{% url 'signup' %}"> SignUp</a>
+
+</body>
+</html>

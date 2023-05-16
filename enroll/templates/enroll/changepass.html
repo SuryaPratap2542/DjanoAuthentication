@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Password</title>
+</head>
+<style>
+    .success{
+        color:red;
+    }
+</style>
+<body>
+Hi this is Your  <strong> Change Password Page </strong> <br> <br>
+
+<form action="" method="post" novalidate>
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+        <p class="er"> {{error}} </p>
+    {% endfor %}
+    {% endif %}
+  
+
+    {% comment %} {{form.as_p}} {% endcomment %}
+    {% for i in form %}
+    {{i.label_tag}} {{i}} {{i.errors|striptags}} <br><br>
+    {% endfor %}
+    <input type="submit" value="Save">
+</form>
+<a href="{% url 'logout' %}"> LogOut</a>
+<a href="{% url 'profile' %}"> Profile</a>
+
+</body>
+</html>
